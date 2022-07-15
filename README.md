@@ -23,6 +23,77 @@ The build method already does a great job of rendering the state synchronously a
 This example aims to build animations in a game-like loop with a update, paint and start callback.
 
 ```dart
+class SimpleExample extends StatefulWidget {
+  const SimpleExample({Key? key}) : super(key: key);
+
+  @override
+  State<SimpleExample> createState() => _SimpleExampleState();
+}
+
+class _SimpleExampleState extends AnimationWidget<SimpleExample> {
+  var x = 0.0;
+  var y = 0.0;
+  var z = 0.0;
+
+  @override
+  void update(Duration time) {
+    final t = delta.inMilliseconds / 1000;
+    x += t;
+    y += t;
+    z += t;
+  }
+
+  @override
+  Widget paint(BuildContext context, BoxConstraints constraints) {
+    return Material(
+      child: Center(
+        child: Container(
+          width: 100,
+          height: 100,
+          transform: Matrix4.identity()
+            ..rotateX(x)
+            ..rotateY(y)
+            ..rotateZ(z),
+          child: const Text(
+            'Hello World',
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+By only changing `State` to `AnimationWidget` and the build method to paint method with constraints it is possible to draw every frame.
+
+This also makes it possible to animate multiple things at once and update asynchronously.
+
+## Inline painter
+
+There is also a helper class I use a lot to render a inline canvas.
+
+```dart
+CustomPaint(
+  painter: InlinePainter(
+    draw: (canvas, size) {
+      final paint = Paint()
+      ..color = cube.color
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 2;
+      final rect = Rect.fromLTWH(0, 0, size.width, size.height);
+      canvas.drawRect(rect, paint);
+    },
+  ),
+)
+```
+
+## Example
+
+```dart
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -151,27 +222,4 @@ class Cube {
   }
 }
 
-```
-
-By only changing `State` to `AnimationWidget` and the build method to paint method with constraints it is possible to draw every frame.
-
-This also makes it possible to animate multiple things at once and update asynchronously.
-
-## Inline painter
-
-There is also a helper class I use a lot to render a inline canvas.
-
-```dart
-CustomPaint(
-  painter: InlinePainter(
-    draw: (canvas, size) {
-      final paint = Paint()
-      ..color = cube.color
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 2;
-      final rect = Rect.fromLTWH(0, 0, size.width, size.height);
-      canvas.drawRect(rect, paint);
-    },
-  ),
-)
 ```
