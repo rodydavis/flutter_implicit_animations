@@ -157,7 +157,7 @@ By only changing `State` to `AnimationWidget` and the build method to paint meth
 
 This also makes it possible to animate multiple things at once and update asynchronously.
 
-## Inline canvas
+## Inline painter
 
 There is also a helper class I use a lot to render a inline canvas.
 
