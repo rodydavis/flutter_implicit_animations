@@ -21,7 +21,7 @@ jobs:
           flutter config --enable-web
           flutter pub get
       - name: Build
-        run: flutter build web
+        run: flutter build web --base-href=/flutter_implicit_animations/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
