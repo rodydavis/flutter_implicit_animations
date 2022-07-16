@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/animation.dart';
+import '../widgets/animated_state.dart';
 
 class SimpleExample extends StatefulWidget {
   const SimpleExample({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class SimpleExample extends StatefulWidget {
   State<SimpleExample> createState() => _SimpleExampleState();
 }
 
-class _SimpleExampleState extends AnimationWidget<SimpleExample> {
+class _SimpleExampleState extends AnimatedState<SimpleExample> {
   var x = 0.0;
   var y = 0.0;
   var z = 0.0;

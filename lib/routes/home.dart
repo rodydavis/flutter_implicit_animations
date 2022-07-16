@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../widgets/animation.dart';
+import '../widgets/animated_state.dart';
 import '../widgets/inline_painter.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends AnimationWidget<HomeScreen> {
+class _HomeScreenState extends AnimatedState<HomeScreen> {
   final List<Cube> cubes = <Cube>[];
 
   double x = 0.0, y = 0.0, z = 0.0;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-abstract class AnimationWidget<T extends StatefulWidget> extends State<T>
+abstract class AnimatedState<T extends StatefulWidget> extends State<T>
     with SingleTickerProviderStateMixin {
   Duration elapsed = Duration.zero;
   Duration delta = Duration.zero;

@@ -30,7 +30,7 @@ class SimpleExample extends StatefulWidget {
   State<SimpleExample> createState() => _SimpleExampleState();
 }
 
-class _SimpleExampleState extends AnimationWidget<SimpleExample> {
+class _SimpleExampleState extends AnimatedState<SimpleExample> {
   var x = 0.0;
   var y = 0.0;
   var z = 0.0;
@@ -68,7 +68,7 @@ class _SimpleExampleState extends AnimationWidget<SimpleExample> {
 }
 ```
 
-By only changing `State` to `AnimationWidget` and the build method to paint method with constraints it is possible to draw every frame.
+By only changing `State` to `AnimatedState` and the build method to paint method with constraints it is possible to draw every frame.
 
 This also makes it possible to animate multiple things at once and update asynchronously.
 
@@ -108,7 +108,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends AnimationWidget<HomeScreen> {
+class _HomeScreenState extends AnimatedState<HomeScreen> {
   final List<Cube> cubes = <Cube>[];
 
   double x = 0.0, y = 0.0, z = 0.0;
